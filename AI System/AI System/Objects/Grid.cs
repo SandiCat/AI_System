@@ -65,7 +65,7 @@ namespace AI_System
                 {
                     for (int j = 0; j < _side; j++)
                     {
-                        _positions[i, j] = new Vector2(_squareSide * j + Sprite.Position.X + doubleSpacing * j, yPosition);
+                        _positions[i, j] = new Vector2(_squareSide * j + Sprite.Position.X + _spacing + doubleSpacing * j, yPosition);
                     }
 
                     yPosition += _squareSide + doubleSpacing;

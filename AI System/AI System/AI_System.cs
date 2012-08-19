@@ -70,10 +70,22 @@ namespace AI_System
             //Load fonts:
             Console.Font = Content.Load<SpriteFont>("DebuggConsoleFont");
 
+            //Load default textures:
+            TextureContainer.DefaultTextures[typeof(Life)] = TextureContainer.AddTextureAndReturn("LifeCell");
+            TextureContainer.DefaultTextures[typeof(TestObject)] = TextureContainer.AddTextureAndReturn("GenericObject");
+
             //Make game objects:
             Grid grid = new Grid(new Vector2(30, 30), new Dictionary<Type, char>(), 5, 10, 50);
             ObjectManager.InstantImportExisting(grid);
 
+            //Test it:
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    grid.Objects[i, j] = ObjectManager.InstantCreateAndReturn(typeof(TestObject), Vector2.Zero);
+                }
+            } 
         }
 
         protected override void UnloadContent()

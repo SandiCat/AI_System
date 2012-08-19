@@ -107,6 +107,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Objects\TestObject.cs" />
+    <Compile Include="Objects\Life.cs" />
     <Compile Include="Objects\Grid.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
