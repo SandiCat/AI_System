@@ -25,6 +25,9 @@ namespace AI_System
         //The debug console:
         public static DebugConsole Console;
 
+        //Game object references:
+        Grid ObjectGrid;
+
         public AI_System_Garphics()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -66,6 +69,11 @@ namespace AI_System
 
             //Load fonts:
             Console.Font = Content.Load<SpriteFont>("DebuggConsoleFont");
+
+            //Make game objects:
+            Grid grid = new Grid(new Vector2(30, 30), new Dictionary<Type, char>(), 5, 10, 50);
+            ObjectManager.InstantImportExisting(grid);
+
         }
 
         protected override void UnloadContent()
