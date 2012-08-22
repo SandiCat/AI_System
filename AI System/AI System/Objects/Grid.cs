@@ -138,10 +138,16 @@ namespace AI_System
                 }
             }
 
-            throw new IndexOutOfRangeException();
+            throw new Exception("Object isn't in the grid");
         }
         public void SetPosition(GameObject obj, Vector2 newPosition) //Changes the position of the object to the position in argument
         {
+            if (newPosition.X >= _side || newPosition.Y >= _side
+                || newPosition.X < 0 || newPosition.Y < 0)
+            {
+                throw new Exception("Position is outside of the grid");
+            }
+
             Vector2 oldPosition = GetXY(obj);
 
             Objects[(int)oldPosition.X, (int)oldPosition.Y] = null;
@@ -149,6 +155,10 @@ namespace AI_System
             if (Objects[(int)newPosition.X, (int)newPosition.Y] == null)
             {
                 Objects[(int)newPosition.X, (int)newPosition.Y] = obj;
+            }
+            else
+            {
+                throw new Exception("Space occupied");
             }
         }
         public void RelativeSetPosition(GameObject obj, Vector2 modifier) //Changes the position of the object by adding and/or subtracting from its coordinates
