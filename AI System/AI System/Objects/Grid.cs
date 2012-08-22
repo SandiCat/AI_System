@@ -140,5 +140,22 @@ namespace AI_System
 
             throw new IndexOutOfRangeException();
         }
+        public void SetPosition(GameObject obj, Vector2 newPosition) //Changes the position of the object to the position in argument
+        {
+            Vector2 oldPosition = GetXY(obj);
+
+            Objects[(int)oldPosition.X, (int)oldPosition.Y] = null;
+
+            if (Objects[(int)newPosition.X, (int)newPosition.Y] == null)
+            {
+                Objects[(int)newPosition.X, (int)newPosition.Y] = obj;
+            }
+        }
+        public void RelativeSetPosition(GameObject obj, Vector2 modifier) //Changes the position of the object by adding and/or subtracting from its coordinates
+        {
+            Vector2 modifiedPosition = GetXY(obj) + modifier;
+
+            SetPosition(obj, modifiedPosition);
+        }
     }
 }

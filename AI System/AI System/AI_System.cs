@@ -93,6 +93,9 @@ namespace AI_System
 
             grid.Objects[3, 4] = ObjectManager.InstantCreateAndReturn(typeof(TestObject), Vector2.Zero);
 
+            ObjectGrid.SetPosition(ObjectManager.Get(typeof(TestObject))[0], new Vector2(2, 1));
+            ObjectGrid.RelativeSetPosition(ObjectManager.Get(typeof(TestObject))[0], new Vector2(-1, 0));
+
             Console.WriteLine(ObjectGrid.GetXY(ObjectManager.Get(typeof(TestObject))[0]).ToString());
         }
 
