@@ -15,7 +15,7 @@ using C3.XNA;
 
 namespace AI_System
 {
-    public class AI_System_Garphics : Microsoft.Xna.Framework.Game
+    public class AI_System_Graphics : Microsoft.Xna.Framework.Game
     {
         //Basic game info:
         GraphicsDeviceManager graphics;
@@ -26,9 +26,9 @@ namespace AI_System
         public static DebugConsole Console;
 
         //Game object references:
-        Grid ObjectGrid;
+        public static Grid ObjectGrid;
 
-        public AI_System_Garphics()
+        public AI_System_Graphics()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -78,14 +78,22 @@ namespace AI_System
             Grid grid = new Grid(new Vector2(30, 30), new Dictionary<Type, char>(), 5, 10, 50);
             ObjectManager.InstantImportExisting(grid);
 
+            //Make refreneces:
+            ObjectGrid = grid;
+
             //Test it:
-            for (int i = 0; i < 5; i++)
-            {
-                for (int j = 0; j < 5; j++)
-                {
-                    grid.Objects[i, j] = ObjectManager.InstantCreateAndReturn(typeof(TestObject), Vector2.Zero);
-                }
-            } 
+
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    for (int j = 0; j < 5; j++)
+            //    {
+            //        grid.Objects[i, j] = ObjectManager.InstantCreateAndReturn(typeof(TestObject), Vector2.Zero);
+            //    }
+            //}
+
+            grid.Objects[3, 4] = ObjectManager.InstantCreateAndReturn(typeof(TestObject), Vector2.Zero);
+
+            Console.WriteLine(ObjectGrid.GetXY(ObjectManager.Get(typeof(TestObject))[0]).ToString());
         }
 
         protected override void UnloadContent()

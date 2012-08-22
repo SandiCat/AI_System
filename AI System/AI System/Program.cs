@@ -6,7 +6,7 @@ namespace AI_System
     {
         static void Main(string[] args)
         {
-            using (AI_System_Garphics game = new AI_System_Garphics())
+            using (AI_System_Graphics game = new AI_System_Graphics())
             {
                 game.Run();
             }

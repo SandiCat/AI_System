@@ -124,5 +124,21 @@ namespace AI_System
                 GameInfo.RefSpriteBatch.DrawLine(_horizontalLinePoints[0, i], _horizontalLinePoints[1, i], Color.Black, _lineThickness);
             }
         }
+
+        public Vector2 GetXY(GameObject obj)
+        {
+            int hashCode = obj.GetHashCode();
+
+            for (int i = 0; i < _side; i++)
+            {
+                for (int j = 0; j < _side; j++)
+                {
+                    if (Objects[i, j] != null && Objects[i, j].GetHashCode() == hashCode)
+                        return new Vector2(i, j);
+                }
+            }
+
+            throw new IndexOutOfRangeException();
+        }
     }
 }
